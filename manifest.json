@@ -1,0 +1,23 @@
+{
+  "name": "Ushahidi Mobile app",
+  "short_name": "Ushahidi",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.ushahidi.mobile"
+    }
+  ],
+  "icons": [
+    {
+      "src": "90cfb4a564276c5f82a992f73f080317.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "d05eb1d97e28d37b24ff2a91a804a1c4.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+    "name": "ushahidi/platform",
+    "description": "Ushahidi Platform core and API server",
+    "homepage": "http://ushahidi.com/",
+    "type": "project",
+    "license": "AGPL-3.0",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ushahidi/ohanzee-db"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "aura/di": "2.2",
+        "bodom78/kohana-imagefly": "dev-master",
+        "league/oauth2-server": "~3.2.4",
+        "league/flysystem-aws-s3-v3": "~1.0",
+        "league/flysystem-rackspace": "~1.0",
+        "league/flysystem": "~1.0",
+        "ircmaxell/password-compat": "^1.0.4",
+        "intercom/intercom-php": "^v3.1.2",
+        "abraham/twitteroauth": "^0.5.3",
+        "kohana/core" : "3.3.3.1@dev",
+        "kohana/cache" : "3.3.*@dev",
+        "kohana/image" : "3.3.*@dev",
+        "kohana/minion" : "3.3.*@dev",
+        "ohanzee/database": "dev-master",
+        "robmorgan/phinx": "~0.8.0",
+        "ushahidi/shadowhand-email": "dev-master",
+        "symm/gisconverter": "~1.0.5",
+        "twilio/sdk": "3.12.*",
+        "vlucas/phpdotenv": "~2.2",
+        "zeelot/kohana-media": "1.3.*@dev",
+        "ext-curl": "*",
+        "ext-gd": "*",
+        "ext-imap": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-mcrypt": "*",
+        "league/csv": "~7.1@dev",
+        "ddeboer/data-import": "dev-master",
+        "symfony/property-access": "~2.5",
+        "league/event": "^2.2@dev",
+        "league/url": "~3.0",
+        "beheh/flaps": "dev-master",
+        "doctrine/cache": "^1.5@dev",
+        "ramsey/uuid": "^3.4.1",
+        "sentry/sentry": "~1.5"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "guzzle/guzzle": "~3.9.1",
+        "phpunit/phpunit": "^5.7",
+        "phpunit/dbunit": "~1.4",
+        "phpspec/phpspec": "~3.0",
+        "heroku/heroku-buildpack-php": "dev-master",
+        "behat/behat": "^3.3",
+        "behat/mink-extension": "^2.2",
+        "behat/mink-goutte-driver": "^1.2",
+        "satooshi/php-coveralls": "^2.0@dev",
+        "leanphp/phpspec-code-coverage": "~3.1",
+        "laravel/homestead": "^5.2",
+        "squizlabs/php_codesniffer": "~3.0"
+    },
+    "config": {
+        "bin-dir": "bin/",
+        "github-protocols": [
+            "https",
+            "http",
+            "git"
+        ],
+        "preferred-install": "dist"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ushahidi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\": "tests/unit",
+            "Tests\\Integration\\Bootstrap\\": "tests/integration/bootstrap"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "compile" : [
+            "@migrate"
+        ],
+        "lint" : [
+            "phpcs --ignore=vendor/*,application/*,modules/*,plugins/*,httpdocs/*,tests/spec/*,migrations/*,bin/* --standard=src/ruleset.xml --tab-width=4 ./",
+            "phpcs --standard=tests/spec/ruleset.xml --tab-width=4 ./tests/spec/",
+            "phpcs --standard=migrations/ruleset.xml --tab-width=4 ./migrations/"
+        ],
+        "pre-coverage" : [
+            "rm -rf coverage/"
+        ],
+        "coverage" : [
+            "phpunit",
+            "phpspec run --no-code-generation",
+            "behat --strict --profile ci"
+        ],
+        "migrate" : [
+            "phinx migrate -c application/phinx.php"
+        ],
+        "pre-test" : [
+            "@migrate"
+        ],
+        "test" : [
+            "phpunit --no-coverage",
+            "phpspec run --no-code-generation",
+            "behat --strict --profile ci"
+        ]
+    }
+}
