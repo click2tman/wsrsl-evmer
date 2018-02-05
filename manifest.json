@@ -1,6 +1,6 @@
 {
-  "name": "WSRSL EVMER Mobile app",
-  "short_name": "WSRSLEVMER",
+  "name": "Ushahidi Mobile app",
+  "short_name": "Ushahidi",
   "prefer_related_applications": true,
   "related_applications": [
     {
