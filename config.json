@@ -2,7 +2,7 @@
 	"client_id": "ushahidiui",
 	"client_secret": "35e7f0bca957836d05ca0492211b0ac707671261",
 		"backend_domain": "https://ever.electiondata.io/platform",
-		"google_analytics_id": "",
+		"google_analytics_id": "UA-113303195-1",
 	"intercom_app_id": "",
 	"mapbox_api_key": ""
 }
